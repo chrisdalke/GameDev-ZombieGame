@@ -1,0 +1,30 @@
+////////////////////////////////////////////////
+// ZombieGame
+// Chris Dalke
+////////////////////////////////////////////////
+// Module: Friendly
+////////////////////////////////////////////////
+
+package Game.Entities;
+
+import Engine.Game.GameObject;
+
+public class Friendly extends GameObject {
+    public Friendly() {
+        super(null);
+    }
+
+    @Override
+    public void simulate() {
+        super.simulate();
+    }
+
+    @Override
+    public void render() {
+        super.render();
+    }
+}
+
+////////////////////////////////////////////////
+// End of code
+////////////////////////////////////////////////

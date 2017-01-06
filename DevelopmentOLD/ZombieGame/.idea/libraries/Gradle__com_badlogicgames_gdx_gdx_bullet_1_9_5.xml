@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.badlogicgames.gdx:gdx-bullet:1.9.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-bullet/1.9.5/2ef2d55ac157d182dbef90568f94cc2f7775eaed/gdx-bullet-1.9.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-bullet/1.9.5/3e0b964d4d57dd891fba8b45a03a1b1ca86ccfa9/gdx-bullet-1.9.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,76 @@
+[1.8.1-SNAPSHOT]
+- Fix: division by zero in Separation behavior.
+- Fix: in FollowFlowField behavior the predicted position was affecting steering.
+- Fix: stackoverflow in Sequence with guarded Task.
+- API Addition: ability to remove steering behaviors from BlendedSteering.
+- API Addition: method to check the registration of an archetype tree.
+
+[1.8.0]
+- Updated to libgdx 1.9.1
+- API Change and Addition: Pathfinding API
+  * Added method getIndex to the interface IndexedGraph.
+  * Removed classes DefaultIndexedGraph and IndexedNode.
+- API Change and Addition: Behavior Tree API extended to make it easier to think and design in terms of states, see https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
+  * Added ability to guard any task.
+  * Added branch task DynamicGuardSelector.
+  * Now the text format supports internal sub-trees that, besides improving reuse and readability, allow you to use composite guards. 
+  * Now the parser is able to report comments, which can be useful for certain tools such as graphical editors.
+
+[1.7.0]
+- Updated to libgdx 1.7.1
+- API Addition: added GdxAI service locator that reduces coupling with libgdx and allows you to use gdx-ai
+  out of a libgdx application without having to initialize libgdx environment, so avoiding the waste of resources
+  and the need of native libraries; see https://github.com/libgdx/gdx-ai/wiki/Initializing-and-Using-gdxAI
+- API Change and Addition: Messaging API
+  * Removed delta time argument from the update method of the MessageDispatcher; the new GdxAI.getTimepiece().getTime() is internally used instead.
+  * Added return receipt support, see https://github.com/libgdx/gdx-ai/wiki/Message-Handling#return-receipt
+  * The report method of PendingMessageCallback now takes an additional argument for the return receipt.
+- API Change and Addition: State Machine API
+  * Now the StateMachine interface has a generic type parameter for the state.
+  * Added owner's getter and setter to the DefaultStateMachine; also, the owner is now optional in constructor.
+- API Change and Addition: Behavior tree API revised and improved, see https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
+  * Now tasks have a status that is updated each time they run.
+  * Added enum support in behavior tree files.
+  * Now parallel task can specify sequence or selector policy.
+  * Added cancel method for task termination, mainly used by the parallel task.
+  * Now you can add listeners to the tree in order to be notified when a task has run and a child is added.
+  * Now task methods setControl, success and fail are final.
+  * Now method addChild is final and Task's subclasses have to implement addChildToTask.
+  * Added decorator tasks Repeat and Random.
+  * Added leaf tasks Failure, Success and Wait.
+  * Added branch tasks RandomSelector and RandomSequence; removed deterministic attribute from Selector and Sequence. 
+  * Now the UntilFail decorator succeeds when its child fails.
+  * Added ability to clone tasks through third-party libraries like Kryo.
+  * Added support for custom distributions in behavior tree files.
+  * Now LeafTask usage is less error prone thanks to the execute method.
+
+[1.6.0]
+- Updated to libgdx 1.7.0
+- API Change: now tasks take the blackboard object from the behavior tree they belong to.
+- Fix: now the wander rate of the wander steering behavior is expressed in radian per second to make it frame rate independent.
+- API Change: now behavior trees support annotations to define attributes and constraints in task classes.
+- Fix: now the reach orientation behavior always chooses the shortest rotation angle.
+- API Addition: added Formation Motion API, see https://github.com/libgdx/gdx-ai/wiki/Formation-Motion
+- API Change: the Steering Behavior API has slightly changed to interact with the new Formation Motion API.
+- API Addition: added random distributions to behavior trees.
+- API Addition: added shortcut methods to send telegrams without specifying a sender.
+- API Addition: added capability to reset behavior trees.
+- API Addition: added zero speed threshold to the Limiter interface.
+
+[1.5.0]
+- API Change: moved singleton capability of the MessageDispatcher to MessageManager, meaning that you can now use multiple message dispatchers if needed.
+- API Addition: added capability to register programmatically created behavior tree archetypes in BehaviorTreeLibrary.
+- API Addition: added capability to scan pending telegrams, so they can be saved and subsequently restored on game loading, see https://github.com/libgdx/gdx-ai/wiki/Message-Handling#saving-and-restoring-pending-messages
+- API Addition: added pathfinding and path smoothing, see https://github.com/libgdx/gdx-ai/wiki/Pathfinding
+- API Addition: added scheduling API supporting task time slicing over several frames, see https://github.com/libgdx/gdx-ai/wiki/Scheduling
+- API Change: moved raycast classes to the common package com.badlogic.gdx.ai.utils
+- API Addition: added collides method to RaycastCollisionDetector.
+- API Change: now Ray has start and end points instead of an origin and a direction.
+
+[1.4.0]
+- API Addition: added behaviors trees (thanks implicit-invocation), see https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees
+- API Addition: added steering behaviors, see https://github.com/libgdx/gdx-ai/wiki/Steering-Behaviors
+- API Addition: added support for telegram providers, see https://github.com/libgdx/gdx-ai/wiki/Message-Handling#telegram-providers
+- API Change: MessageDispatcher's dispatchDelayedMessages renamed to update which now takes deltaTime as input to properly support game pause; removed time granularity.
+- API Change: renamed Agent to Telegraph and moved it to msg package. Also, removed the update method.
+- API Addition: now StateMachine implements Telegraph.
