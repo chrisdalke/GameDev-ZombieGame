@@ -1,0 +1,30 @@
+////////////////////////////////////////////////
+// ORBITAL SPACE
+// A game by Chris Dalke
+////////////////////////////////////////////////
+// Module: MenuStage
+////////////////////////////////////////////////
+
+package Engine.UI.Stages.Types;
+
+import Engine.UI.Stages.UIStage;
+
+public class MenuStage extends UIStage {
+
+    public void init(){
+        
+    }
+
+    @Override
+    protected void update() {
+
+    }
+
+    @Override
+    protected void render() {
+    }
+}
+
+////////////////////////////////////////////////
+// End of code
+////////////////////////////////////////////////
